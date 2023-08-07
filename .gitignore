@@ -1,0 +1,7 @@
+
+.history
+*.http
+*.pac
+
+*\ copy.*
+test.js

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:*"/>
+  <title>DCProxy Options</title>
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 16px;
+    }
+    body {
+      margin: 0;
+    }
+    .main-container {
+      display: flex;
+      padding: 1rem;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .main-container .nav {
+      width: 250px;
+    }
+    .main-container .nav > h3 {
+      margin: 0.5rem 0;
+    }
+    /* .main-container .nav .section.list { */
+      /* padding-left: 24px; */
+    /* } */
+    .main-container .nav .section.list .item .item-link {
+      display: block;
+      padding: 7px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      color: #333;
+    }
+    .main-container .nav .section.list .item .item-link:hover {
+      background-color: cornflowerblue;
+      color: #FFF;
+    }
+    .main-container .main-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .main-body .content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .main-body .content-header .header-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .main-body .content-body {
+      flex: 1;
+    }
+    .form-container {
+      margin: 2rem 0;
+    }
+    .form-container h3 {
+      font-size: 16px;
+    }
+    .form-container .sub-title {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .form {
+      margin: 0;
+      padding: 0;
+    }
+    .form-inner {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .form-inner .form-item {
+      margin-inline-end: 10px;
+    }
+    .form .form-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .form .form-item .form-label {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .form .form-input {
+      flex: 1;
+    }
+    .form .form-input .form-input_input {
+      outline: none;
+      border: 1px solid #d5d5d5;
+      padding: 7px 12px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .form .form-input .form-input_select {
+      outline: none;
+      border: 1px solid #d5d5d5;
+      padding: 7px 12px 7px 5px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .form-input_textarea {
+      outline: none;
+      border: 1px solid #d5d5d5;
+      padding: 7px;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 640px;
+      height: 400px;
+      color: #666;
+    }
+    .error-message {
+      font-size: 16px;
+      color: #F53F3F;
+      margin-bottom: 10px;
+    }
+    .message {
+      font-size: 16px;
+      color: #008026;
+      margin-bottom: 10px;
+    }
+    .form-actions {
+      .form-btn {
+        outline: none;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: 7px 22px;
+        border-radius: 4px;
+        margin-inline-end: 10px;
+
+        &.btn-save {
+          background-color: #00B42A;
+          border: 1px solid #00B42A;
+          color: #FFF;
+
+          &:hover {
+            background-color: #009A29;
+          }
+        }
+        &.btn-fmt:hover {
+          background-color: #dadada;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- <div class="nav">
+      <h3>设置</h3>
+      <h3>代理服务器</h3>
+      <div class="section list">
+        <div class="item">
+          <a href="#" class="item-link">WJ-2.38</a>
+        </div>
+      </div>
+    </div> -->
+    <div class="main-body">
+      <div class="content-header">
+        <div class="header-title">
+          <span>代理服务配置</span>
+          <!-- <span>代理服务配置 - </span><span>WJ-2.38</span> -->
+        </div>
+      </div>
+      <div class="content-body">
+        <div class="form-container">
+          <!-- <h3>代理服务配置</h3> -->
+          <div class="sub-title">使用JSON格式</div>
+          <textarea id="content" class="form-input_textarea"></textarea>
+        </div>
+        <div class="form-container">
+          <div class="error-message"></div>
+          <div class="message"></div>
+          <div class="form-actions">
+            <button id="btn_save" class="form-btn btn-save">保存</button>
+            <button id="btn_fmt" class="form-btn btn-fmt">Format</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="common.js"></script>
+  <script type="text/javascript" src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Proxy</title>
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 16px;
+    }
+    body {
+      margin: 0;
+    }
+    .main-container {
+      width: 150px;
+      .list {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 0;
+
+        .item {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          font-size: 14px;
+          padding: 7px 12px;
+          cursor: pointer;
+          color: #434343;
+
+          &:hover {
+            background-color: #f7f8fa;
+          }
+
+          .icon {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin-inline-end: 10px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+
+            filter: drop-shadow(100px 0 #8c8c8c);
+            transform: translateX(-100px);
+          }
+          .item-title {
+            flex: 1;
+            min-width: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .item-ext {
+            display: flex;
+            justify-content: flex-end;
+
+            .icon-sub {
+              display: block;
+              width: 16px;
+              height: 16px;
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center;
+              margin-inline-end: 0;
+            }
+          }
+
+          &.active {
+            .icon {
+              filter: drop-shadow(100px 0 #5b8c00);
+              transform: translateX(-100px);
+            }
+          }
+        }
+
+        .divider {
+          height: 1px;
+          background-color: #eee;
+          margin: 5px 0;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="list"></div>
+  </div>
+  
+  <script type="text/javascript" src="html2canvas.min.js"></script>
+  <script type="text/javascript" src="common.js"></script>
+  <script type="text/javascript" src="proxy.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
+  <script type="text/javascript" src="notify.js"></script>
+</body>
+</html>
