@@ -25,12 +25,14 @@ async function init() {
     items.push(createDidivder());
   }
   
+  //TODO Capture
   items.push(createOptionMenu({ name: 'Capture', icon: './images/capture.svg', onClick: async function() {
     // const tab = await getCurrentTab();
     // captureFullPage(tab);
     getCurrentWindow().then((win) => capture(win));
   }}));
 
+  //TODO Mute
   const tab = await getCurrentTab();
   if (tab) {
     const { mutedInfo: { muted } } = tab;
@@ -44,6 +46,18 @@ async function init() {
       window.close();
     }}));
   }
+
+  //TODO Clear Download History
+  items.push(createOptionMenu({ name: 'Clear Download History', icon: './images/mop.svg', onClick: function() {
+    DownloadManager.clearHistory();
+    window.close();
+  } }));
+  
+  //TODO Clear History
+  items.push(createOptionMenu({ name: 'Clear History', icon: './images/contract_delete.svg', onClick: function() {
+    HistoryManager.clear();
+    window.close();
+  } }));
   
   items.push(createDidivder());
   items.push(createOptionMenu({ name: 'Current Proxy', icon: './images/chat_bubble.svg', onClick: async function(ev) {
@@ -94,8 +108,16 @@ function createOptionMenu(data) {
   }
   content += `<div class="item-title">${data.name}</div>`;
   el.innerHTML = content;
+
+  function menuItemClickHandler(ev) {
+    const result = data.onClick(ev);
+    if (result === false) {
+      return;
+    }
+    window.close();
+  }
   if (data.onClick) {
-    el.addEventListener('click', data.onClick);
+    el.addEventListener('click', menuItemClickHandler);
   }
   return el;
 }

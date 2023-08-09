@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "permissions": [
     "storage", "declarativeContent", "browser_action", "proxy", "notifications",
-    "tabs", "activeTab",
+    "tabs", "activeTab", "downloads", "history",
     "<all_urls>"
   ],
   "background": {
