@@ -6,6 +6,13 @@ window.onload = () => {
   getSettings().then((data) => {
     document.getElementById('content').value = JSON.stringify(data, {}, 2);
   });
+
+  getProxySettings().then(data => {
+    let content = JSON.stringify(data, {}, 2);
+    content = content.replace(/\n/g, '<br/>').replace(/\\n/g, '<br/>');
+    console.log(content)
+    document.querySelector('.options-value').innerHTML = content;
+  })
 };
 
 function save() {

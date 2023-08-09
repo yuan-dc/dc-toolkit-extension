@@ -95,12 +95,13 @@ function FindProxyForURL(url, host) {
     }
     return false;
   }
+  
+  var siteProxy = getMatchedSite(host);
+  if (siteProxy) {
+    return getProxyUrl(siteProxy.proxy);
+  }
   var exclude = isExclude(url, host);
-  if (!exclude) {
-    var siteProxy = getMatchedSite(host);
-    if (siteProxy) {
-      return getProxyUrl(siteProxy.proxy);
-    }
+  if (globalProxy.proxy && !exclude) {
     return getProxyUrl(globalProxy.proxy);
   }
   return 'DIRECT';

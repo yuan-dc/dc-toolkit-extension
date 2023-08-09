@@ -79,6 +79,7 @@ async function init() {
       title: 'DCProxy',
       message,
     });
+    return false;
   } }));
 
   items.push(createOptionMenu({ name: 'Reset', icon: './images/undo.svg', onClick: function(ev) {
@@ -109,8 +110,9 @@ function createOptionMenu(data) {
   content += `<div class="item-title">${data.name}</div>`;
   el.innerHTML = content;
 
-  function menuItemClickHandler(ev) {
-    const result = data.onClick(ev);
+  async function menuItemClickHandler(ev) {
+    const result = await data.onClick(ev);
+    console.log(result);
     if (result === false) {
       return;
     }
