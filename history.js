@@ -6,6 +6,12 @@ const DownloadManager = {
     }, () => {
       console.log('Clear download history completed');
     });
+    
+    chrome.downloads.erase({
+      state: 'interrupted'
+    }, () => {
+      console.log('Clear download history completed');
+    });
   },
 };
 
