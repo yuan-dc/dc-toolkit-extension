@@ -4,7 +4,7 @@ window.onload = function() {
 
 async function init() {
   const items = [];
-  items.push(createProxyMenuItem({ name: '直接连接', icon: './images/multiple_stop.svg', directly: true }));
+  items.push(createProxyMenuItem({ name: 'Direct Connect', icon: './images/multiple_stop.svg', directly: true }));
   items.push(createDidivder());
 
   const servers = await getProxyServers();
@@ -87,7 +87,7 @@ async function init() {
     window.close();
   } }));
 
-  items.push(createOptionMenu({ name: '选项', icon: './images/settings.svg', onClick: function(ev) {
+  items.push(createOptionMenu({ name: 'Options', icon: './images/settings.svg', onClick: function(ev) {
     chrome.tabs.create({ url: 'options.html' });
   } }));
 
