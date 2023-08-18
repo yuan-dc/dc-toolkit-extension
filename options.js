@@ -2,6 +2,7 @@
 window.onload = () => {
   document.getElementById('btn_save').addEventListener('click', save);
   document.getElementById('btn_fmt').addEventListener('click', format);
+  document.getElementById('btn_default').addEventListener('click', setDefault);
 
   getSettings().then((data) => {
     document.getElementById('content').value = JSON.stringify(data, {}, 2);
@@ -52,4 +53,18 @@ function format() {
   } catch (e) {
     console.warn(e);
   }
+}
+
+function setDefault() {
+  const content = `{
+    "servers": [
+      {
+        "name": "WJ-2.38",
+        "proxy": "socks5://192.168.2.38:9666",
+        "selected": true
+      }
+    ]
+  }`;
+  document.getElementById('content').value = content;
+  format();
 }
