@@ -69,10 +69,21 @@ function FindProxyForURL(url, host) {
     return 'PROXY ' + server;
   }
 
-  function matchPattern(host, reg) {
-    reg = reg.replace(/\\./g, '\\\\.').replace(/\\*/g, '\\.+');
-    var regx = new RegExp(reg, 'i');
-    return regx.test(host);
+  function matchPattern(host, pattern) {
+    // reg = reg.replace(/\\./g, '\\.').replace(/\*/g, '\\w+');
+    // var regx = new RegExp(reg, 'i');
+    // return regx.test(host);
+    var p = pattern.replace(/\\s/g, '');
+    if (p.indexOf(',') !== -1) {
+      var patterns = p.split(',');
+      for (var i = 0; i < patterns.length; i++) {
+        if (shExpMatch(host, patterns[i])) {
+          return true;
+        }
+      }
+      return false;
+    }
+    return shExpMatch(host, p);
   }
 
   function getMatchedSite($host) {
